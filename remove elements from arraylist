@@ -1,0 +1,54 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
+public class remove_elements_arraylist {
+    public static void main(String[] args) {
+        List<String> programminglanguages = new ArrayList<>();
+        programminglanguages.add("Java");
+        programminglanguages.add("Python");
+        programminglanguages.add("C");
+        programminglanguages.add("C++");
+        programminglanguages.add("Node");
+        programminglanguages.add("Ruby");
+        programminglanguages.add("Kotlin");
+
+        System.out.println("Initial List :" +programminglanguages);
+       // Remove the element at index `5`
+        programminglanguages.remove(1);
+        System.out.println("After Remove(1)\n" +programminglanguages);
+
+        boolean isRemove = programminglanguages.remove("Ruby");
+        System.out.println("After Remove (\"Ruby\"):" + programminglanguages);
+
+//        Remove the elements exists in the list
+        List<String> scriptinglanguage = new ArrayList<>();
+        scriptinglanguage.add("Java");
+        scriptinglanguage.add("Python");
+        scriptinglanguage.add("Node");
+        programminglanguages.removeAll(scriptinglanguage);
+        System.out.println("After remove(scriptinglangauge) :" +programminglanguages);
+        programminglanguages.removeIf(new Predicate<String>() {
+            @Override
+            public boolean test(String s) {
+                return s.startsWith("C");
+            }
+        });
+        System.out.println("After removing all elements that starts with \"C\" :" +programminglanguages);
+        //Remove the elements from the ArrayList
+        programminglanguages.clear();
+        System.out.println("After Clear :"+programminglanguages);
+
+    }
+}
+
+Output:-
+Initial List :[Java, Python, C, C++, Node, Ruby, Kotlin]
+After Remove(1)
+[Java, C, C++, Node, Ruby, Kotlin]
+After Remove ("Ruby"):[Java, C, C++, Node, Kotlin]
+After remove(scriptinglangauge) :[C, C++, Kotlin]
+After removing all elements that starts with "C" :[Kotlin]
+After Clear :[]
